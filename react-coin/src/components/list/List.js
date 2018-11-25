@@ -4,6 +4,7 @@ import { API_URL } from '../../config';
 import Loading from '../common/Loading';
 import './Table.css';
 import Table from './Table';
+import Pagination from './Pagination';
 
 class List extends React.Component {
 	constructor() {
@@ -13,16 +14,28 @@ class List extends React.Component {
 			loading: false,
 			currencies: [],
 			error: null,
+			totalPages: 0,
+			page: 1,
 		};
+
+		this.handlePaginationClick = this.handlePaginationClick.bind(this);
 	}
 
 	componentDidMount() {
+		this.fetchCurrencies();
+	}
+
+	fetchCurrencies() {
 		this.setState({ loading: true });
-		fetch('https://api.udilia.com/coins/v1/cryptocurrencies?page=1&perPage=20')
+		const { page } = this.state;
+
+		fetch(`${API_URL}/cryptocurrencies?page=${page}&perPage=20`)
 		    .then(handleResponse)
 		    .then((data) => {
+		      const { currencies, totalPages } = data;
 		      this.setState({
-		       	  currencies: data.currencies,
+		       	  currencies,
+		       	  totalPages,
 		       	  loading: false
 		   		});
 		    })
@@ -44,8 +57,22 @@ class List extends React.Component {
 		}
 	}	
 
+	handlePaginationClick(direction) {
+		let nextPage = this.state.page;
+
+		// Increment or decrement page 
+		nextPage = direction === 'next' ? nextPage + 1 : nextPage -1;
+		
+		this.setState({ page: nextPage}, () => {
+			// call fetschCurrencies inside callback
+			// we need to get updated first page
+			this.fetchCurrencies();
+		});
+
+	}
+
 	render() {
-		const { loading, error, currencies } = this.state;
+		const { loading, error, currencies, page, totalPages } = this.state;
 		// render only component, if loading state is true
 		if (loading) {
 			return <div className="loading-container"><Loading /></div>
@@ -57,10 +84,17 @@ class List extends React.Component {
 		}
 
 		return (
-			<Table 
-				currencies={currencies}
-				renderChangePercent={this.renderChangePercent}	
-			/>
+			<div>
+				<Table 
+					currencies={currencies}
+					renderChangePercent={this.renderChangePercent}	
+				/>
+				<Pagination
+					page={page}
+					totalPages={totalPages}
+					handlePaginationClick={this.handlePaginationClick }
+				/>
+			</div>
 		);
 	}
 }
