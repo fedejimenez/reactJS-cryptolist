@@ -5,7 +5,7 @@ The user can have a list of currency prices and a search bar with autocomplete f
 
 <img src="https://udilia.com/images/react-coin-poster.jpg" alt="Poster" width="600" />
 
-<h2><a href="http://crypto-react.s3-website-us-east-1.amazonaws.com"># Live on Amazon AWS</a> </h2>
+<h2><a href="http://crypto-react.s3-website-us-east-1.amazonaws.com" target="_blank"># Live on Amazon AWS</a> </h2>
 
 # Getting started
 
