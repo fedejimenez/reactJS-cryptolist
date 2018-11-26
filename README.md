@@ -1,32 +1,27 @@
-# Learn React by building a web app
+# React Playground App
 
-Starter files for the <a href="https://www.udemy.com/learn-react-by-building-and-deploying-production-ready-app">Learn React by building and deploying production ready app</a> Course.
+Cryptocurrency Web App, built completely in React. 
+The user can have a list of currency prices and a search bar with autocomplete function.
 
 <img src="https://udilia.com/images/react-coin-poster.jpg" alt="Poster" width="600" />
 
-# Project structure
-
-`react-coin` is the folder, where we are going to work for this entire course.
-
-`stages` is the folder, that contains specific stage of application, corresponding to course video. E.g. if you lose track while watching `5th` video, `stages/05` folder will contain solution for you. It also contains final project.
+<h2><a href="http://crypto-react.s3-website-us-east-1.amazonaws.com"># Live on Amazon AWS</a> </h2>
 
 # Getting started
 
 ### Familiar with Git?
 
-clone this repository and `cd` into `react-coin` folder
+clone this repository and `cd` into `crypto-react` folder
 
 ```
-git clone https://github.com/udilia/learn-react-by-building-a-web-app.git
+git clone https://github.com/fedejimenez/crypto-react.git
 
-cd learn-react-by-building-a-web-app/react-coin
 ```
 
 ### Not familiar with Git?
 
-- <a href="https://github.com/udilia/learn-react-by-building-a-web-app/archive/master.zip">Download ZIP</a>
+- <a href="https://github.com/fedejimenez/crypto-react/archive/master.zip">Download ZIP</a>
 - extract the contents of the zip file
-- and `cd` into `react-coin` folder `cd learn-react-by-building-a-web-app-master/react-coin`
 
 ### Install dependencies
 
@@ -39,3 +34,6 @@ npm install
 ```
 npm start
 ```
+
+# About 
+This is just a personal practice project based on the  <a href="https://www.udemy.com/learn-react-by-building-and-deploying-production-ready-app">Learn React by building and deploying production ready app</a> Course.
