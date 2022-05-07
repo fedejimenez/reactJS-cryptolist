@@ -42,3 +42,12 @@
   color: #9cb3c9;
   margin-right: 6px;
 }
+
+.Table-td{
+  display: flex;
+  align-items:center;
+}
+
+.Table-td img{
+  padding: 5px;
+}

@@ -31,12 +31,12 @@ class Search extends React.Component {
 
 		this.setState({ loading: true });
 
-		fetch(`${API_URL}/autocomplete?searchQuery=${searchQuery}`)
+		fetch(`${API_URL}/search?query=${searchQuery}`)
 			.then(handleResponse)
 			.then((result) => {
 				this.setState({ 
 					loading: false,
-					searchResults: result,
+					searchResults: result.coins,
 				});
 			});
 	}

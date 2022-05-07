@@ -34,7 +34,7 @@ class Detail extends React.Component {
 	fetchCurrency(currencyId){
 		this.setState({ loading: true });
 
-		fetch(`${API_URL}/cryptocurrencies/${currencyId}`)
+		fetch(`${API_URL}/coins/${currencyId}`)
 		.then(handleResponse)
 		.then((currency) => {
 			this.setState({
@@ -67,33 +67,33 @@ class Detail extends React.Component {
 		return (
 			<div className="Detail">
 				<h1 className="Detail-heading">
-					{currency.name} ({currency.symbol})
+						{currency.name} ({currency.symbol})
 				</h1>
 
 				<div className="Detail-container"> 
 					<div className="Detail-item">
-						Price <span className="Detail-value">$ {currency.price}</span>  
+						Price <span className="Detail-value">$ {currency.market_data ? currency.market_data.current_price.usd : ''}</span>  
 					</div>
 					<div className="Detail-item">
-						Rank <span className="Detail-value"># {currency.rank}</span>  
+						Rank <span className="Detail-value"># {currency.market_cap_rank}</span>  
 					</div>
 					<div className="Detail-item">
-						24H Change <span className="Detail-value"> {renderChangePercent(currency.percentChange24h)}</span>  
+						24H Change <span className="Detail-value"> {renderChangePercent(currency.market_data ? currency.market_data.price_change_percentage_24h : '')}</span>  
 					</div>
 					<div className="Detail-item">
 						<span className="Detail-title">Market Cap</span>  
 						<span className="Detail-dollar">$</span>  
-						{currency.marketCap}
+						{currency.market_data ? currency.market_data.market_cap.usd : ''}
 					</div>
 					<div className="Detail-item">
 						<span className="Detail-title">24H Volume</span>  
 						<span className="Detail-dollar">$</span>  
-						{currency.volume24h}
+						{currency.market_data ? currency.market_data.total_volume.usd : ''}
 					</div>
 					<div className="Detail-item">
 						<span className="Detail-title">Total Supply</span>  
 						<span className="Detail-dollar"></span>  
-						{currency.totalSupply}
+						{currency.market_data ? currency.market_data.total_supply : ''}
 					</div>
 				</div>
 			</div>

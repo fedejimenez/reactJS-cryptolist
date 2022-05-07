@@ -25,18 +25,21 @@ const Table = (props) => {
 							onClick={() => history.push(`/currency/${currency.id}`)}
 						>
 							<td>
-								<span className="Table-rank">{currency.rank}</span>
-								{currency.name}
+								<div className="Table-td">
+									<span className="Table-rank">{currency.market_cap_rank}</span>
+									{currency.name}
+									<img src={currency.image} alt="Coin icon" width="20"/>
+								</div>
 							</td>
 							<td>
 								<span className="Table-dollar"></span>
-								{currency.price}
+								{currency.current_price}
 							</td>
 							<td>
 								<span className="Table-dollar"></span>
-								{currency.marketCap}
+								{currency.market_cap}
 							</td>
-							<td>{renderChangePercent(currency.percentChange24h)}
+							<td>{renderChangePercent(currency.price_change_percentage_24h)}
 							</td>
 						</tr>
 					))}

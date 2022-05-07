@@ -14,7 +14,7 @@ class List extends React.Component {
 			loading: false,
 			currencies: [],
 			error: null,
-			totalPages: 0,
+			totalPages: 100,
 			page: 1,
 		};
 
@@ -29,13 +29,12 @@ class List extends React.Component {
 		this.setState({ loading: true });
 		const { page } = this.state;
 
-		fetch(`${API_URL}/cryptocurrencies?page=${page}&perPage=20`)
+		fetch(`${API_URL}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=${page}&sparkline=false`)
 		    .then(handleResponse)
 		    .then((data) => {
-		      const { currencies, totalPages } = data;
+		      const currencies = data;
 		      this.setState({
 		       	  currencies,
-		       	  totalPages,
 		       	  loading: false
 		   		});
 		    })
